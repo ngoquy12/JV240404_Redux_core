@@ -1,7 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { random_action } from "../redux/actions/randomAction";
 
 export default function Random() {
-  const counter = useSelector((state) => state);
-  return <div>{/* <h1>Random: {counter}</h1> */}</div>;
+  const random = useSelector((state) => state.random);
+  const dispatch = useDispatch();
+
+  const handleRandom = () => {
+    dispatch(random_action());
+  };
+
+  return (
+    <div>
+      <h1>Random: {JSON.stringify(random)}</h1>
+      <button onClick={handleRandom}>Random</button>
+    </div>
+  );
 }

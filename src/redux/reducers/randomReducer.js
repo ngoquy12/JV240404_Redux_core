@@ -1,5 +1,16 @@
 const randomReducer = (state = [], action) => {
-  return state;
+  console.log("Action: ", action);
+
+  switch (action.type) {
+    case "random":
+      // Cập nhật lại state
+      const newState = [...state, action.payload];
+
+      return newState;
+
+    default:
+      return state;
+  }
 };
 
 export default randomReducer;
